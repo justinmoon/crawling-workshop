@@ -222,3 +222,31 @@ def handshake(address):
     print("Sent verack")
 
     return sock, version_payload
+
+dns_seeds = [
+    'dnsseed.bitcoin.dashjr.org', 
+    'dnsseed.bluematt.me', 
+    'seed.bitcoin.sipa.be', 
+    'seed.bitcoinstats.com', 
+    'seed.bitcoin.sprovoost.nl', 
+    'seed.bitnodes.io',
+]
+
+def fetch_ips(dns_seed):
+    ip_list = []
+    ais = socket.getaddrinfo(dns_seed,0,0,0,0)
+    for result in ais:
+        ip_list.append(result[-1][0])
+    return list(set(ip_list))
+
+def fetch_addresses(dns_seeds):
+    result = []
+    for dns_seed in dns_seeds:
+        try:
+            ips = fetch_ips(dns_seed)
+            addresses = [(ip, 8333) for ip in ips]
+            result.extend(addresses)
+        except:
+            print(f"Error fetching addresses from {dns_seed}")
+            continue
+    return result
