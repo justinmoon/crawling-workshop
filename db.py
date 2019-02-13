@@ -80,7 +80,7 @@ def observe_node(address, args_dict):
     args_dict["port"] = address[1]
     execute_statement(q, args_dict)
 
-def count_observations():
+def count_observations(filename="crawler.db"):
     with sqlite3.connect("crawler.db") as conn:
         return conn.execute("select count(*) from observations").fetchone()[0]
     
