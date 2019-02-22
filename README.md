@@ -5,7 +5,7 @@ Make sure you haver Python 3.6 or higher, as well as the `pip` and `venv` packag
 ```
 python3 -m venv venv
 source venv/bin/activate
-pip install PySocks requests
+pip install PySocks requests jupyter pytest
 jupyter notebook
 ```
 
