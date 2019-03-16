@@ -34,6 +34,8 @@ sudo systemctl start tor.service
 sudo netstat -plnt | grep 9050
 ```
 
+(use `ss` instead of `netstat` if you're on Arch linux ...)
+
 ## Users choose their passwords
 
 ```
